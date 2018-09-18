@@ -129,10 +129,21 @@ def TextToBraille(t):
         r.append(braille[i])
         
     return r
-    
+
+def printBeautiful(b):
+    char_to_matrix = lambda c: tuple(zip(c[0:3], c[3:6]))
+    matrix_matrix = list(map(char_to_matrix, b))
+
+    for row in range(3):
+        for m in matrix_matrix:
+            print(' '.join(('•' if dot == 1 else ' ') for dot in m[row]),
+            end='  ')
+        print()
+            
 def main():
     a = input("Insira um texto: ")
     
     texto = TextToBraille(a)
-    print(texto)
-main()
+    printBeautiful(texto)
+
+if __name__ == '__main__': main()

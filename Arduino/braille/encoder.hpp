@@ -15,4 +15,5 @@ class Encoder {
     Encoder(int servo_pin);
     void setPosition(int position);
 };
+
 #endif

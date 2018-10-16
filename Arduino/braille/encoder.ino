@@ -1,5 +1,4 @@
-#include "encoder.h"
-#include <Arduino.h>
+#include "encoder.hpp"
 
 static Servo Encoder::servo;
 
@@ -20,3 +19,4 @@ void Encoder::setPosition(int position) {
 
     rotate(begin + position * step);
 }
+

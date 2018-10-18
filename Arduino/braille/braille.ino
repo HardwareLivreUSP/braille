@@ -14,13 +14,14 @@ void setup() {
 }
 
 void loop() {
+    // debug via serial
 
-    // test encoder
-    // int angle = -1;
-    // if (Serial.available() && (angle = Serial.read() - '0') >= 0) {
-    //     encoder.setPosition(angle);
-    //     Serial.println(angle);
-    // }
+    if (Serial.available()){
+        int arg = Serial.parseInt();
+        // encoder.setPosition(arg);
+        c1.move_relative(arg);
+        Serial.println(arg);
+    }
 
     c1.move_relative(-100);
     // s.step(CW, 1000);

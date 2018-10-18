@@ -4,6 +4,7 @@ import sys
 import os.path
 from PyQt5.QtWidgets import QMainWindow, QApplication, QFileDialog
 import main_window
+from kernel import TextToBraille, printBeautiful
 
 class OpenBrailleQt(QMainWindow, main_window.Ui_MainWindow):
     def __init__(self):
@@ -18,7 +19,8 @@ class OpenBrailleQt(QMainWindow, main_window.Ui_MainWindow):
         self.actionPrint.triggered.connect(self.send_to_printer)
 
     def send_to_printer(self):
-        print(self.textEdit.toPlainText())
+        # print(self.textEdit.toPlainText())
+        printBeautiful(TextToBraille(self.textEdit.toPlainText()))
 
     def new_file(self):
         self.current_file = None

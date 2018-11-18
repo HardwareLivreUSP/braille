@@ -9,13 +9,13 @@ Encoder::Encoder(int servo_pin) {
 void Encoder::rotate(int angle) {
     Encoder::servo.attach(this->servo_pin);
     Encoder::servo.write(angle);
-    delay(500);
+    delay(700);
     Encoder::servo.detach();
 }
 
 void Encoder::setPosition(int position) {
-    const int begin = 11;
-    const int step = 20;
+    const float begin = 8.;
+    const float step = 20.;
 
     rotate(begin + position * step);
 }

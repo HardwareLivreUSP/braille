@@ -1,17 +1,29 @@
 #include "parser.hpp"
 
-static void cmd1(uint16_t arg) {
-    
+struct serial_command {
+    unsigned int param : 12;
+    unsigned int cmd : 4;
+};
+
+static void cmd1(unsigned int arg) {
+    for (unsigned int i = 0; i < arg; i++) {
+        digitalWrite(13, HIGH);
+        delay(200);
+        digitalWrite(13, LOW);
+        delay(800);
+    }
 }
 
-static void cmd2(uint16_t arg) {
-    
+static void cmd2(unsigned int arg) {
+    for (unsigned int i = 0; i < arg; i++) {
+        digitalWrite(13, HIGH);
+        delay(500);
+        digitalWrite(13, LOW);
+        delay(500);
+    }
 }
 
-void parse_and_execute(uint16_t raw) {
-    void (*funcs[]) (uint16_t) =  {cmd1, cmd2};
-
-    uint8_t  cmd = raw >> 12;
-    uint16_t arg = raw & 0x0FFF;
-    funcs[cmd](arg);
+void parse_and_execute(command raw) {
+    void (*cmds[])(unsigned int) = {cmd1, cmd2};
+    cmds[raw.parsed.cmd](raw.parsed.param);
 }

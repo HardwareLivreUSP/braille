@@ -1,7 +1,7 @@
 #ifndef _PARSER
 #define _PARSER
 
-union command {
+union serial_command {
     struct {
         unsigned int b1 : 8;
         unsigned int b2 : 8;
@@ -13,6 +13,6 @@ union command {
     } parsed;
 };
 
-void parse_and_execute(command raw);
+void parse_and_execute(serial_command raw);
 
 #endif

@@ -11,6 +11,6 @@
 #define Y_STP 3
 #define Z_STP 4
 
-#define SERVO_PIN 10
+#define SERVO_PIN 11
 
 #endif

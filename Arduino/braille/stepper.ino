@@ -14,6 +14,7 @@ Stepper::Stepper(axis ax) {
 }
 
 void Stepper::step(stpdir dir, int steps) {
+    digitalWrite(ENABLE, LOW);
     digitalWrite (this->dir_pin, dir);
     delay (50);
     for (int i = 0; i < steps; i ++) {
@@ -22,4 +23,5 @@ void Stepper::step(stpdir dir, int steps) {
         digitalWrite (this->stp_pin, LOW);
         delayMicroseconds (800);
     }
+    digitalWrite(ENABLE, HIGH);
 }

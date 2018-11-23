@@ -5,7 +5,7 @@
 void setup() {
     Serial.begin(9600);
     pinMode(ENABLE, OUTPUT);
-    digitalWrite(ENABLE, LOW);
+    digitalWrite(ENABLE, HIGH);
     pinMode(13, OUTPUT);
 }
 

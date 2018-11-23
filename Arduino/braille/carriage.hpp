@@ -9,8 +9,8 @@ public:
     void move_relative(float distance);
 private:
     Stepper stepper;
-    float pitch;
-    int steps_per_revolution;
+    float   pitch;
+    int     steps_per_revolution;
 };
 
 #endif

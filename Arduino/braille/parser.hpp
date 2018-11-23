@@ -8,8 +8,8 @@ union serial_command {
     } raw;
 
     struct {
-        unsigned int cmd : 4;
-        unsigned int param : 12;
+        unsigned int cmd   : 4;
+        int          param : 12;
     } parsed;
 };
 

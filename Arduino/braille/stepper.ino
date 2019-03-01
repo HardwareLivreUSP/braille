@@ -11,17 +11,21 @@ Stepper::Stepper(axis ax) {
     this->stp_pin = stp_pins[ax];
     pinMode(this->dir_pin, OUTPUT);
     pinMode(this->stp_pin, OUTPUT);
+
+    this->frequency = 3000;
 }
 
 void Stepper::step(stpdir dir, int steps) {
+    unsigned int T = 1000000 / this->frequency;
+    // unsigned int T = 800;
     digitalWrite(ENABLE, LOW);
     digitalWrite (this->dir_pin, dir);
     delay (50);
     for (int i = 0; i < steps; i ++) {
         digitalWrite (this->stp_pin, HIGH);
-        delayMicroseconds (800);
+        delayMicroseconds (T);
         digitalWrite (this->stp_pin, LOW);
-        delayMicroseconds (800);
+        delayMicroseconds (T);
     }
     digitalWrite(ENABLE, HIGH);
 }

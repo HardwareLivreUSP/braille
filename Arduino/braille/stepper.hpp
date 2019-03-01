@@ -12,6 +12,7 @@ public:
 private:
     byte dir_pin;
     byte stp_pin;
+    unsigned int frequency;
 };
 
 #endif
